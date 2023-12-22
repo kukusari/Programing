@@ -7,18 +7,20 @@ struct student {
  float gpa ;
 } ;
 
-void upgrade( struct student child ) ;
+struct student upgrade( struct student child ) ;
 
 int main() {
+ float GPA_standard = 3.00;
  struct student aboy ;
- aboy.sex = 'M'  ;
+ aboy.sex = 'M' ;
  aboy.gpa = 3.00 ;
- upgrade( aboy ) ;
- printf( " before gpa : %.2f", aboy.gpa ) ;
- return 0 ;
+ aboy = upgrade( aboy ) ;
+ printf( " GPA standard : %.2f \n", GPA_standard ) ;
+ printf( " before gpa : %.2f \n", aboy.gpa ) ;
+ return 0 ; 
 
 }//end function
-void upgrade( struct student child ) {
+struct student upgrade( struct student child ){
 	char m;
 	printf( "sex : M = men\n" ) ;
 	printf( "sex : W = woman\n" ) ;
@@ -27,15 +29,12 @@ void upgrade( struct student child ) {
 	switch ( m ) {
 		case 'M':
 			child.gpa = (child.gpa + (3 *(0.2))) ; 
-			printf( " gpa for men : %.2f \n",child.gpa );
 			break;
 		case 'W':
 			child.gpa = (child.gpa + (0.2)) ; 
-			printf( " gpa for woman : %.2f \n",child.gpa );
 			break;
 	 	default :
 	 		break;
 	}
+	return child;
 }
-
-

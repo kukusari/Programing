@@ -1,28 +1,39 @@
 #include <stdio.h>
 
-struct student (*GetStudent( int*room ) )[ 10 ] ;
-
-struct student{
-  char name[50];
+struct student {
+    char name[20];
 };
 
+struct student (*GetStudent(int *room))[10];
+
 int main() {
-struct student ( *children )[ 10 ] ;
-int group ;
-children = GetStudent( &group ) ;
-return 0 ;
-}//end function
+    struct student (*children)[10];
+    int group;
+    children = GetStudent( &group );
 
-struct student (*GetStudent( int *room ) )[ 10 ] {
-	char *numberstudent[10];
-    printf("room = ");
-    scanf("%d",room);
-
-    for(int j = 1; j < *room; j++){
-        printf("Enter student in room[%d]\n", j  );
-        for(int i = 1; i <  10; i++){
-            printf("Student[%d] =", i  );
-            scanf("%s", numberstudent[i] );
+    for (int i = 0; i < group; i++) {
+        printf("room [%d]\n", i + 1) ;
+        for (int j = 0; j < 10; j++) {
+            printf("student[%d] = %s\n", j + 1, children[i][j].name) ;
         }
     }
+
+    return 0 ;
+}
+
+struct student (*GetStudent(int *room))[10] {
+    printf("How many rooms: ");
+    scanf("%d", room);
+
+    struct student (*student)[10] = new struct student[*room][10];
+
+    for (int i = 0; i < *room; i++) {
+        printf("room [%d]\n", i + 1) ;
+        for (int j = 0; j < 10; j++) {
+            printf(" student[%d]: ", j + 1) ;
+            scanf("%s", student[i][j].name);
+        }
+    }
+
+    return student ;
 }

@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+void GetMatrix( int **value, int *row, int *col ) ;
+
+int main(){
+ 	int *data,m, n;
+ 	GetMatrix( &data, &m, &n ) ;
+		delete []data;
+		return 0;
+ 		
+}
+
+void GetMatrix( int **value, int *row, int *col ){
+		printf("How many row : ");
+		scanf("%d" ,row);
+		printf("How many cols : ");
+		scanf("%d" ,col);
+		
+		*value = new int[*row * *col];
+		printf("Number in the array:\n") ;
+		for( int i = 0 ;  i < *row; i++ )
+			for( int j = 0 ;  j < *col; j++ ){
+			printf("Data  member[%d][%d] : ", i , j  );
+			scanf("%d", &(*value)[i* *col + j]);
+		}	
+		
+		printf("Number in the array have [%d][%d]) line:\n", *row , *col );
+			for(int i = 0;  i < *row; i++)
+				for(int j = 0;  j < *col; j++){
+				printf("Member[%d][%d]  :[%d]\n", i ,j , (*value)[i * *col + j]);
+		}
+		printf("-------End-------");
+	}

@@ -2,8 +2,8 @@
 
 struct student {
  char name[ 20 ] ;
-
 } ;
+
 void GetStudent( struct student child[][ 10 ], int *room ) ;
 
 int main() {
